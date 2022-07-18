@@ -1,16 +1,9 @@
 <h1>StarSips info</h1>
-  
-<!-- <ul class="list-group">
-  <li 
-      *ngFor="let ship of ships"
-      class="list-group-item">
-      {{ ship.name }} {{ship.stops}}
-  </li>
-</ul> -->
-<div class="mat-form-field-infix ng-tns-c164-2"><input _ngcontent-wdn-c350="" matinput="" class="mat-input-element mat-form-field-autofill-control ng-tns-c164-2 cdk-text-field-autofill-monitored ng-untouched ng-pristine ng-valid" ng-reflect-placeholder="Please provide an account..." id="mat-input-0" placeholder="Input..." aria-invalid="false" aria-required="false"><span class="mat-form-field-label-wrapper ng-tns-c164-2"><label class="mat-form-field-label ng-tns-c164-2 mat-empty mat-form-field-empty ng-star-inserted" ng-reflect-disabled="true" id="mat-form-field-label-3" ng-reflect-ng-switch="false" for="mat-input-0" aria-owns="mat-input-0"><span class="ng-tns-c164-2 ng-star-inserted">Please add an input...</span>
- </label></span></div>
- <div _ngcontent-wdn-c350="" class="text-center"><button _ngcontent-wdn-c350="" mat-flat-button="" color="accent" class="mat-focus-indicator login-button btn btn-def btn-block mat-flat-button mat-button-base mat-accent" ng-reflect-color="accent" ng-reflect-disabled="true" disabled="true"><span class="mat-button-wrapper">Next</span><div matripple="" class="mat-ripple mat-button-ripple" ng-reflect-disabled="true" ng-reflect-centered="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"></div></button></div>
-  <table class="table">
+  <div>
+    <input type="text" name="search" [(ngModel)]="distance"  placeholder="distance">
+</div>
+<button (click)="search()">Search</button>
+<table class="table">
       <thead class="thead-light">
           <tr>
               <th scope="col">Name</th>
@@ -18,9 +11,15 @@
           </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of ships">
-          <td>{{item.name}}</td>
-          <td>{{item.stops}}</td>
+        <tr  *ngFor="let data of items | paginate: {
+          itemsPerPage: itemsPerPage,
+          currentPage: page,
+          totalItems: totalItems
+        }
+        " >
+          <td>{{data.name}}</td>
+          <td>{{data.stops}}</td>
       </tr>
       </tbody>
   </table>
+  <pagination-controls  class="pagi"  (pageChange)="getdata((page = $event))"></pagination-controls>

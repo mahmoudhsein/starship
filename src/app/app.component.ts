@@ -1,4 +1,4 @@
-import { Component,OnInit  } from '@angular/core';
+import { Component  } from '@angular/core';
 import { StarshipserviceService } from './services/starshipservice.service';
 
 @Component({
@@ -6,16 +6,29 @@ import { StarshipserviceService } from './services/starshipservice.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'starship';
-  ships:any;
-  
+  page: number = 1;
+  items:any;
+  totalItems : any; 
+  itemsPerPage = 10;
+  distance:any;
   constructor(private service:StarshipserviceService) {}
-  
-  ngOnInit() {
-      this.service.getStarShips()
-        .subscribe(response => {
-          this.ships = response;
+ 
+  getdata(page: any){
+    // this.service.getStarShips(this.distance,page,this.itemsPerPage)
+    //     .subscribe((data: any)=> {
+    //       this.items = data.basicStarShips;
+    //       this.totalItems = data.totalRecords;
+    //     });
+    this.page=page;
+    this.search();
+  }
+  search(){
+    this.service.getStarShips(this.distance,this.page,this.itemsPerPage)
+        .subscribe((data: any)=> {
+          this.items = data.basicStarShips;
+          this.totalItems = data.totalRecords;
         });
   }
 }

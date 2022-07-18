@@ -20,6 +20,9 @@
     "@angular/router": "~13.1.0",
     "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "@popperjs/core": "^2.11.5",
+    "jw-angular-pagination": "^1.2.0",
+    "jw-paginate": "^1.0.4",
+    "ngx-pagination": "^6.0.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
