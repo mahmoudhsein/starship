@@ -16,11 +16,7 @@ export class AppComponent {
   constructor(private service:StarshipserviceService) {}
  
   getdata(page: any){
-    // this.service.getStarShips(this.distance,page,this.itemsPerPage)
-    //     .subscribe((data: any)=> {
-    //       this.items = data.basicStarShips;
-    //       this.totalItems = data.totalRecords;
-    //     });
+   
     this.page=page;
     this.search();
   }
